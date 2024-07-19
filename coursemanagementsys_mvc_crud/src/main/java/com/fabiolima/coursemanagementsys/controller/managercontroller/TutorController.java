@@ -1,10 +1,9 @@
-package com.fabiolima.coursemanagementsys.controller;
+package com.fabiolima.coursemanagementsys.controller.managercontroller;
 
 import com.fabiolima.coursemanagementsys.entity.Course;
 import com.fabiolima.coursemanagementsys.entity.Tutor;
 import com.fabiolima.coursemanagementsys.service.CourseService;
 import com.fabiolima.coursemanagementsys.service.TutorService;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package com.fabiolima.coursemanagementsys.controller;
+package com.fabiolima.coursemanagementsys.controller.managercontroller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

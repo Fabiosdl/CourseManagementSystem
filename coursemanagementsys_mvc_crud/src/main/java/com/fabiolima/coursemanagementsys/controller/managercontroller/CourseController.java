@@ -1,4 +1,4 @@
-package com.fabiolima.coursemanagementsys.controller;
+package com.fabiolima.coursemanagementsys.controller.managercontroller;
 
 import com.fabiolima.coursemanagementsys.entity.Course;
 import com.fabiolima.coursemanagementsys.service.CourseService;
