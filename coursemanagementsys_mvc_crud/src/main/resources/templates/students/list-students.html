@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management System - Students</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Manage Students</h1>
+        <hr>
+        <a th:href="@{/students/showFormAddStudent}"
+           class="btn btn-primary btn-sm mb-3">Add New Student</a>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="tempStudent : ${students}">
+                    <td th:text="${tempStudent.firstName}"/>
+                    <td th:text="${tempStudent.lastName}"/>
+                    <td th:text="${tempStudent.email}"/>
+                    <td th:with="id=${tempStudent.id}">
+                        <a th:href="@{/students/viewStudent/{id}(id=${id})}"
+                           class="btn btn-primary btn-sm mb-3">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>
