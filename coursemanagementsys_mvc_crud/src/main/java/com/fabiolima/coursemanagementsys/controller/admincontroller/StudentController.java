@@ -1,4 +1,4 @@
-package com.fabiolima.coursemanagementsys.controller.managercontroller;
+package com.fabiolima.coursemanagementsys.controller.admincontroller;
 
 import com.fabiolima.coursemanagementsys.entity.Course;
 import com.fabiolima.coursemanagementsys.entity.Student;
@@ -29,7 +29,7 @@ public class StudentController {
     public String showStudents(Model theModel){
         List<Student> studentsList = studentService.findAllStudents();
         theModel.addAttribute("students", studentsList);
-        return "/students/list-students";
+        return "/admin/students/list-students";
     }
 
     @GetMapping("/showFormAddStudent")
@@ -38,14 +38,14 @@ public class StudentController {
         // form to this object.
         theModel.addAttribute("student", theStudent);
         //here I created an empty Student instance and bind it to the Model instance.
-        return "/students/student-form";
+        return "/admin/students/student-form";
     }
         // now in the post mapping, spring boot will bind the info to theModel and collect the data from the model and
         // bind it to the Student instance in the method below
     @PostMapping("/save")
     public String saveStudent(@ModelAttribute("student") Student theStudent){
         studentService.saveStudent(theStudent);
-        return "redirect:/students";
+        return "redirect:/admin/students";
     }
 
     @GetMapping("/viewStudent/{studentId}")
@@ -53,14 +53,14 @@ public class StudentController {
         Student tempStudent = studentService.findStudentAndEnrolledCoursesByStudentId(studentId);
         theModel.addAttribute("student", tempStudent);
         theModel.addAttribute("studentCourse", tempStudent.getCourseList());
-        return "/students/student-view";
+        return "/admin/students/student-view";
     }
 
     @GetMapping("/withdrawCourse/{studentId}/{courseId}")
     public String withdrawCourse(@PathVariable int studentId,
                                  @PathVariable int courseId){
         studentService.withdrawEnrolledCourseByStudentId(studentId,courseId);
-        return "redirect:/students/viewStudent/"+studentId;
+        return "redirect:/admin/students/viewStudent/"+studentId;
     }
 
     @GetMapping("/enrollCourse/{studentId}")
@@ -71,7 +71,7 @@ public class StudentController {
         theModel.addAttribute("availableCourses",courseList);
         theModel.addAttribute("student", tempStudent);
         // i want to show a list of courses for the student to enroll
-        return "/students/student-enroll-courses";
+        return "/admin/students/student-enroll-courses";
     }
 
     @GetMapping("/enroll/{studentId}/{courseId}")
@@ -84,6 +84,6 @@ public class StudentController {
         //create another method in the Service package to display all the courses, but do not allow the student
         // to enroll in a course if the student is already enrolled
 
-        return "redirect:/students/viewStudent/" + studentId;
+        return "redirect:/admin/students/viewStudent/" + studentId;
     }
 }

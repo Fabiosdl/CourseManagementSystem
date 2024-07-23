@@ -14,7 +14,7 @@
 
     <p class="h4 mb-4">Save Course</p>
 
-    <form action="#" th:action="@{/courses/save}"
+    <form action="#" th:action="@{/admin/courses/save}"
           th:object="${course}" method="post">
 
         <input type="hidden" th:field="*{id}"/>
@@ -23,7 +23,7 @@
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>
     <br>
-    <a th:href="@{/courses}">Back to Courses List</a>
+    <a th:href="@{/admin/courses}">Back to Courses List</a>
 
 </div>
 

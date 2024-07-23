@@ -1,4 +1,4 @@
-package com.fabiolima.coursemanagementsys.controller.managercontroller;
+package com.fabiolima.coursemanagementsys.controller.admincontroller;
 
 import com.fabiolima.coursemanagementsys.entity.Course;
 import com.fabiolima.coursemanagementsys.entity.Tutor;
@@ -32,7 +32,7 @@ public class TutorController {
 
         // add list of tutors to spring model
         theModel.addAttribute("tutors", tutorsList);
-        return "/tutors/list-tutors";
+        return "/admin/tutors/list-tutors";
     }
 
     @GetMapping("/showFormForAddTutor")
@@ -42,13 +42,13 @@ public class TutorController {
         theModel.addAttribute("tutor", theTutor);
         //model attribute will bind "tutor" info obtained from the form to the  theTutor object
 
-        return "tutors/tutor-form";
+        return "/admin/tutors/tutor-form";
     }
 
     @PostMapping("/save")
     public String saveTutor(@ModelAttribute("tutor") Tutor theTutor){
         tutorService.saveTutor(theTutor);
-        return "redirect:/tutors";
+        return "redirect:/admin/tutors";
     }
 
     @GetMapping("/viewTutor/{tutorId}")
@@ -59,14 +59,14 @@ public class TutorController {
         theModel.addAttribute("tutor", tempTutor);
         theModel.addAttribute("tutorCourses", courseList);
 
-        return "/tutors/tutor-view";
+        return "/admin/tutors/tutor-view";
     }
 
     @GetMapping("/withdrawCourse/{tutorId}/{courseId}")
     public String withdrawCourse(@PathVariable int tutorId,
                                  @PathVariable int courseId){
         tutorService.withdrawCourseByTutorId(tutorId,courseId);
-        return "redirect:/tutor/viewTutor/" + tutorId;
+        return "redirect:/admin/tutor/viewTutor/" + tutorId;
     }
 
     @GetMapping("/showAvailableCourses/{tutorId}")
@@ -75,13 +75,13 @@ public class TutorController {
         Tutor tempTutor = tutorService.findTutorById(tutorId);
         theModel.addAttribute("availableCourses", courseList);
         theModel.addAttribute("tutor", tempTutor);
-        return "/tutors/tutor-teach-course";
+        return "/admin/tutors/tutor-teach-course";
     }
 
     @GetMapping("/teach/{tutorId}/{courseId}")
     public String teachCourse(@PathVariable int tutorId,
                             @PathVariable int courseId){
         tutorService.enrollTutorInCourse(tutorId,courseId);
-        return"redirect:/tutors/showAvailableCourses/" + tutorId;
+        return"redirect:/admin/tutors/showAvailableCourses/" + tutorId;
     }
 }

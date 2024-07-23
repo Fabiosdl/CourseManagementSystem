@@ -1,4 +1,4 @@
-package com.fabiolima.coursemanagementsys.controller.managercontroller;
+package com.fabiolima.coursemanagementsys.controller.admincontroller;
 
 import com.fabiolima.coursemanagementsys.entity.Course;
 import com.fabiolima.coursemanagementsys.service.CourseService;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/courses")
+@RequestMapping("admin/courses")
 public class CourseController {
 
     private CourseService courseService;
@@ -24,25 +24,25 @@ public class CourseController {
     public String showCourses(Model theModel){
         List<Course> courseList = courseService.findAllCourses();
         theModel.addAttribute("courses", courseList);
-        return "/courses/list-courses";
+        return "/admin/courses/list-courses";
     }
 
     @GetMapping("/delete/{courseId}")
     public String deleteCourse(@PathVariable int courseId){
         courseService.deleteCourseById(courseId);
-        return "redirect:/courses";
+        return "redirect:/admin/courses";
     }
 
     @GetMapping("/showFormAddCourse")
     public String showFormAddCourse(Model theModel){
         Course theCourse = new Course();
         theModel.addAttribute("course", theCourse);
-        return "courses/course-form";
+        return "/admin/courses/course-form";
     }
 
     @PostMapping("/save")
     public String saveNewCourse(@ModelAttribute("course") Course theCourse){
         courseService.saveCourse(theCourse);
-        return "redirect:/courses";
+        return "redirect:/admin/courses";
     }
 }
