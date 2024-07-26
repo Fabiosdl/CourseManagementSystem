@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("admin/courses")
+@RequestMapping("/admin/courses")
 public class CourseController {
 
     private CourseService courseService;

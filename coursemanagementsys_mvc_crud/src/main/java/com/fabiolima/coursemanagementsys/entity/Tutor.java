@@ -8,11 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tutor")
-public class Tutor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+public class Tutor extends User {
 
     @Column(name = "first_name")
     private String firstName;
@@ -30,19 +26,14 @@ public class Tutor {
                 fetch = FetchType.LAZY)
     private List<Course> courseList;
 
-    public Tutor(){}
+    public Tutor(){
+        super();
+    }
     public Tutor(String firstName, String lastName, String email) {
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -88,7 +79,7 @@ public class Tutor {
     @Override
     public String toString() {
         return "Tutor{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

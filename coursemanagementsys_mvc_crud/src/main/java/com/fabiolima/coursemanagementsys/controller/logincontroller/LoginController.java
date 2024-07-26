@@ -5,16 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
 public class LoginController {
 
-    @GetMapping
+    @GetMapping("/showLoginPage") //it has to match up with the appSecurity file login form
     public String login(){
         return "/login/login-page";
     }
 
-    @GetMapping("/studentWebPage/studentLogin")
-    public String showStudentLogin(){
-        return "/login/student-login";
-    }
+
 }
