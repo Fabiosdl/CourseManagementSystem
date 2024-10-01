@@ -24,7 +24,7 @@ public class CourseController {
     public String showCourses(Model theModel){
         List<Course> courseList = courseService.findAllCourses();
         theModel.addAttribute("courses", courseList);
-        return "/admin/courses/list-courses";
+        return "admin/courses/list-courses";
     }
 
     @GetMapping("/delete/{courseId}")
@@ -37,7 +37,7 @@ public class CourseController {
     public String showFormAddCourse(Model theModel){
         Course theCourse = new Course();
         theModel.addAttribute("course", theCourse);
-        return "/admin/courses/course-form";
+        return "admin/courses/course-form";
     }
 
     @PostMapping("/save")

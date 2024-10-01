@@ -9,4 +9,6 @@ public interface UserService extends UserDetailsService {
     public User findByUserName(String username);
 
     void save(WebUser webUser);
+
+    void deleteUserById(int userId);
 }

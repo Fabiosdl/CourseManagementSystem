@@ -9,7 +9,7 @@ public class LoginController {
 
     @GetMapping("/showLoginPage") //it has to match up with the appSecurity file login form
     public String login(){
-        return "/login/login-page";
+        return "login/login-page";
     }
 
 

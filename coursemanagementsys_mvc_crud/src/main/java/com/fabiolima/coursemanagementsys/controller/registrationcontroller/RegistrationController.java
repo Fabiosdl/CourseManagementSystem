@@ -40,7 +40,7 @@ public class RegistrationController {
 
         theModel.addAttribute("webUser", new WebUser());
 
-        return "/register/registration-form";
+        return "register/registration-form";
     }
 
     @PostMapping("/processRegistrationForm")
@@ -59,7 +59,7 @@ public class RegistrationController {
 
         // check the database if user already exists
         User existing = userService.findByUserName(userName);
-        if (existing != null){
+        if (existing != null && existing.getRole().equals(theWebUser.getRole())){
             theModel.addAttribute("webUser", new WebUser());
             theModel.addAttribute("registrationError", "User name already exists.");
 

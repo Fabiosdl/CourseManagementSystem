@@ -10,9 +10,13 @@
 <body>
 <div class="container">
     <h1>Manage Tutors</h1>
+        <form action="#" th:action="@{/logout}" method="POST" class="d-inline-block">
+            <input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+        </form>
+        <a th:href="@{/admin/dashboard}" class="btn btn-outline-primary mt-2 d-inline-block">Home</a>
+
     <hr>
-    <a th:href="@{/tutors/showFormForAddTutor}"
-       class="btn btn-primary btn-sm mb-3">Add New Tutor</a>
+
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
         <tr>
@@ -29,7 +33,7 @@
                 <td th:text="${tempTutor.lastName}"/>
                 <td th:text="${tempTutor.email}"/>
                 <!-- pending to create a page to view tutor details -->
-                <td> <a th:href="@{/tutors/viewTutor/{id}(id=${tempTutor.id})}"
+                <td> <a th:href="@{/admin/tutors/viewTutor/{id}(id=${tempTutor.id})}"
                         class="btn btn-primary btn-sm mb-3">View</a>
                 </td>
             </tr>

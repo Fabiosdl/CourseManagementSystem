@@ -12,9 +12,17 @@
 <body>
 <div class="container">
     <h1>Student</h1> <h1 th:text="${student.firstName + ' ' + student.lastName}"/>
+    <form action="#" th:action="@{/logout}" method="POST" class="d-inline-block">
+        <input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+    </form>
+    <a th:href="@{/admin/students}" class="btn btn-outline-primary mt-2 d-inline-block">Student Home</a>
     <hr>
 
-    <a th:href="@{/students/enrollCourse/{id}(id=${student.id})}"
+    <a th:href="@{/admin/students/delete/{id}(id=${student.id})}"
+       class="btn btn-danger btn-sm mb-3"
+       onclick="if(!confirm('Are you sure you want to delete this student?')) return false;">Delete Student</a>
+
+    <a th:href="@{/admin/students/enrollCourse/{id}(id=${student.id})}"
        class="btn btn-primary btn-sm mb-3">See Available Course</a>
 
     <table class="table table-bordered table-striped">
@@ -31,8 +39,9 @@
             <td th:text="${tempCourse.id}"/>
             <td th:text="${tempCourse.title}"/>
             <td>
-                <a th:href="@{/students/withdrawCourse/{sId}/{tId}(sId=${student.id}, tId=${tempCourse.id})}"
-                class="btn btn-danger btn-sm mb-3">Withdraw</a>
+                <a th:href="@{/admin/students/withdrawCourse/{sId}/{tId}(sId=${student.id}, tId=${tempCourse.id})}"
+                class="btn btn-danger btn-sm mb-3"
+                   onclick="if(!confirm('Are you sure you want to delete this tutor?')) return false;">Withdraw</a>
             </td>
         </tr>
         </tbody>

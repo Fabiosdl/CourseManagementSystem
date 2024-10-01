@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 @Configuration
 public class AppSecurity {
 
-    //query to sprng boot find the user/role customized table
+    //query to spring boot find the user/role customized table
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource){
 
@@ -50,8 +50,9 @@ public class AppSecurity {
 
         http.authorizeHttpRequests( configurer ->
                         configurer
-                                .requestMatchers("/student/**").hasRole("STUDENT")
-                                .requestMatchers("/tutor/**").hasRole("TUTOR")
+                                .requestMatchers("/studentWebPage/**").hasRole("STUDENT")
+                                .requestMatchers("/tutorWebPage/**").hasRole("TUTOR")
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/register/**").permitAll()
                                 .anyRequest().authenticated()
                 )

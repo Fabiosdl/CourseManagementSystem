@@ -1,5 +1,6 @@
 package com.fabiolima.coursemanagementsys.service;
 
+import com.fabiolima.coursemanagementsys.dao.UserRepository;
 import com.fabiolima.coursemanagementsys.dao.specialdao.UserDAO;
 import com.fabiolima.coursemanagementsys.entity.Student;
 import com.fabiolima.coursemanagementsys.entity.Tutor;
@@ -13,10 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -24,11 +22,14 @@ public class UserServiceImpl implements UserService{
     private UserDAO userDAO;
 
     private BCryptPasswordEncoder passwordEncoder;
+    private UserRepository userRepository;
 
     @Autowired
-    public UserServiceImpl(UserDAO userDAO, BCryptPasswordEncoder passwordEncoder){
+    public UserServiceImpl(UserDAO userDAO, BCryptPasswordEncoder passwordEncoder,
+                           UserRepository userRepository){
         this.userDAO = userDAO;
         this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -64,6 +65,16 @@ public class UserServiceImpl implements UserService{
         user.setRole(webUser.getRole());
         // save user in the database
         userDAO.saveUser(user);
+    }
+
+    @Override
+    public void deleteUserById(int userId) {
+        User tempUser;
+        Optional<User> result = userRepository.findById(userId);
+        if(result.isPresent()){
+            tempUser = result.get();
+        } else throw new RuntimeException("User not found.");
+        userRepository.delete(tempUser);
     }
 
 

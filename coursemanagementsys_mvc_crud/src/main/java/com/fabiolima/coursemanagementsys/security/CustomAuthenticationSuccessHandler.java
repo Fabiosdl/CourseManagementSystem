@@ -40,8 +40,21 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         HttpSession session = request.getSession();
         session.setAttribute("user", theUser);
 
+        // check what is the role of the user
+        String redirectURL = new String();
+        switch (theUser.getRole()){
+            case "STUDENT" :
+                redirectURL = "/studentWebPage/" + theUser.getId();
+                break;
+            case "TUTOR" :
+                redirectURL = "/tutorWebPage/" + theUser.getId();
+                break;
+            case "ADMIN" :
+                redirectURL = "/admin/dashboard";
+        }
+
         // forward to home page
-        response.sendRedirect(request.getContextPath() + "/");
+        response.sendRedirect(request.getContextPath() + redirectURL);
     }
 
 }

@@ -110,14 +110,13 @@
                             </ul>
                         </div>
 
+                        <!-- Select Role -->
                         <div class="input-group">
-                            <label class="col-md-4 control-label" for="Role">What is your role</label>
                             <div class="col-md-4">
-                                <select id="Role" th:field="*{role}" name="Role" class="form-control" multiple="multiple">
-                                    <option value="">-- Select --</option>
-                                    <option value="STUDENT">Student</option>
-                                    <option value="TUTOR">Tutor</option>
-                                </select>
+                                <input type="radio" th:field="*{role}" name="checkboxes" value="STUDENT">
+                                Student
+                                <input type="radio" th:field="*{role}" name="checkboxes" value="TUTOR">
+                                Tutor
                             </div>
                         </div>
 

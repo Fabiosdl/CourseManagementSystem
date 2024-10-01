@@ -11,6 +11,10 @@
 
 <div class="container">
     <h1>List of Available Courses To Enroll</h1>
+    <form action="#" th:action="@{/logout}" method="POST" class="d-inline-block">
+        <input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+    </form>
+    <a th:href="@{/admin/students}" class="btn btn-outline-primary mt-2 d-inline-block">Student Home</a>
     <hr>
 
     <table class="table table-bordered table-striped">
@@ -27,7 +31,7 @@
             <td th:text="${tempCourse.id}"/>
             <td th:text="${tempCourse.title}"/>
             <td th:with="id=${tempCourse.id}">
-                <a th:href="@{/students/enroll/{studentId}/{courseId}(studentId=${student.id},courseId=${id})}"
+                <a th:href="@{/admin/students/enroll/{studentId}/{courseId}(studentId=${student.id},courseId=${id})}"
                    class="btn btn-primary btn-sm mb-3">Enroll</a>
             </td>
         </tr>

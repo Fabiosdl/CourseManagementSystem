@@ -6,6 +6,11 @@
 </head>
 
 <body>
+<form action="#" th:action="@{/logout}" method="POST" class="d-inline-block">
+	<input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+</form>
+<a th:href="@{/admin/dashboard}" class="btn btn-outline-primary mt-2 d-inline-block">Home</a>
+<hr>
 
 	<h2>User registered successfully!</h2>
 
@@ -18,9 +23,6 @@
 	</ul>
 
 	<hr>
-	
-	<a th:href="@{/showMyLoginPage}">Login with new user name</a>
-	
 </body>
 
 </html>
