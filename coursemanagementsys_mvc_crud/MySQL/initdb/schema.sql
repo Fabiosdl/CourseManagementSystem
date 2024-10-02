@@ -78,3 +78,15 @@ SET @admin_id = LAST_INSERT_ID();
 
 INSERT INTO admin (id, first_name, last_name, email)
 VALUES (@admin_id,'admin', 'admin', 'admin@admin.com');
+
+INSERT INTO course (title)
+VALUES
+    ('Algorithms & Data Structure 1'),
+    ('Algorithms & Data Structure 2'),
+    ('Databases'),
+    ('Computer System'),
+    ('Web Information Processing'),
+    ('Software Testing'),
+    ('Mobile Application Development'),
+    ('Object Oriented Programming');
+

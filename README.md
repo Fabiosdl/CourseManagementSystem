@@ -37,8 +37,6 @@ A full-stack Course Management System that allows the admin to manage students, 
    - View enrolled courses
    - Check grades for each course
    - Access learning materials and communicate with tutors (planned feature)
-   - Prerequisites
-   - Docker: Ensure Docker is installed on your computer. If not, download and install it from here. 
 
 ## How to Run the App
 
