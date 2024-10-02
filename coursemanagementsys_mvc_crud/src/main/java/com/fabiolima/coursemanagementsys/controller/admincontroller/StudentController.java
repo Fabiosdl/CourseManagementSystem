@@ -85,7 +85,7 @@ public class StudentController {
         Student tempStudent = studentService.findStudentAndEnrolledCoursesByStudentId(studentId);
         theModel.addAttribute("student", tempStudent);
         theModel.addAttribute("studentCourse", tempStudent.getCourseList());
-        return "/admin/students/student-view";
+        return "admin/students/student-view";
     }
 
     @GetMapping("/delete/{studentId}")
@@ -109,7 +109,7 @@ public class StudentController {
         theModel.addAttribute("availableCourses",courseList);
         theModel.addAttribute("student", tempStudent);
         // i want to show a list of courses for the student to enroll
-        return "/admin/students/student-enroll-courses";
+        return "admin/students/student-enroll-courses";
     }
 
     @GetMapping("/enroll/{studentId}/{courseId}")
