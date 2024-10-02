@@ -7,7 +7,6 @@ import com.fabiolima.coursemanagementsys.service.CourseService;
 import com.fabiolima.coursemanagementsys.service.TutorService;
 import com.fabiolima.coursemanagementsys.service.UserService;
 import com.fabiolima.coursemanagementsys.user.WebUser;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,7 +69,7 @@ public class TutorController {
 
         User existingUser = userService.findByUserName(userName);
 
-        if(existingUser != null){
+        if(existingUser != null && !existingUser.getRole().equals(theTutor.getRole())){
             theModel.addAttribute("webUser", new WebUser());
             theModel.addAttribute("registrationError", "User name already exists.");
 

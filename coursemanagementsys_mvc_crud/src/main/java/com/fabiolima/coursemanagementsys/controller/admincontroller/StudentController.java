@@ -67,7 +67,7 @@ public class StudentController {
 
         User existingUser = userService.findByUserName(userName);
 
-        if(existingUser != null){
+        if(existingUser != null && !existingUser.getRole().equals(theStudent.getRole())){
             theModel.addAttribute("webUser", new WebUser());
             theModel.addAttribute("registrationError", "User name already exists.");
 
